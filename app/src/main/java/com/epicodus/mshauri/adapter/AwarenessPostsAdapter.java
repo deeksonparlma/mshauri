@@ -54,7 +54,7 @@ public class AwarenessPostsAdapter extends RecyclerView.Adapter<AwarenessPostsAd
             mContext =View.getContext();
         }
         public void bindAwarenessPosts(AwarenessModel awareness){
-            AwarenesspostFoundation.setText("@"+awareness.getFoundationName());
+//            AwarenesspostFoundation.setText("@"+awareness.getFoundationName());
             AwarenesspostTitle.setText(awareness.getArticleTitile());
             AwarenesspostArticle.setText(awareness.getArticleContent());
             AwarenesspostDate.setText(awareness.getDatePosted());

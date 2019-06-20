@@ -6,9 +6,11 @@ import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -34,6 +36,8 @@ public class MshaurichatActivity extends AppCompatActivity implements View.OnCli
     private Timer autoUpdate;
 @BindView(R.id.send) Button mSend;
     private FirebaseListAdapter<ChatMessage> adapter;
+    @BindView(R.id.send2)
+    ImageView sendMessage;
     @BindView(R.id.input) EditText mMessage;
     ArrayList<String> messages = new ArrayList<>();
     @BindView(R.id.listMessages) ListView allMessages;
@@ -43,7 +47,9 @@ public class MshaurichatActivity extends AppCompatActivity implements View.OnCli
         setContentView(R.layout.activity_mshaurichat);
         ButterKnife.bind(this);
         mSend.setOnClickListener(this);
+        sendMessage.setOnClickListener(this);
         displayChatMessages();
+        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 //        show();
     }
 
@@ -60,7 +66,7 @@ public class MshaurichatActivity extends AppCompatActivity implements View.OnCli
                             System.out.println(user);
                             messages.add(user);
                         }
-                        ArrayAdapter<String> adapter = new ArrayAdapter<String>(MshaurichatActivity.this, android.R.layout.simple_list_item_1, messages);
+                        ArrayAdapter<String> adapter = new ArrayAdapter<String>(MshaurichatActivity.this, R.layout.list,R.id.sss, messages);
                         allMessages.setAdapter(adapter);
                     }
                     @Override
@@ -112,7 +118,7 @@ public class MshaurichatActivity extends AppCompatActivity implements View.OnCli
     @Override
     public void onClick(View v) {
         EditText input = (EditText)findViewById(R.id.input);
-        if(v == mSend){
+        if(v == sendMessage){
 //            details();
             String u = "";
             FirebaseUser current = FirebaseAuth.getInstance().getCurrentUser();
@@ -120,13 +126,18 @@ public class MshaurichatActivity extends AppCompatActivity implements View.OnCli
             DatabaseReference myRef = FirebaseDatabase.getInstance().getReference("users");
             DatabaseReference username = myRef.child(current.getUid()).child("username");
             String message = mMessage.getText().toString().trim();
+            if (message.isEmpty()){
+                mMessage.setError("Cannot be empty");
+                return;
+            }
             username.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     String username = dataSnapshot.getValue(String.class);
-                    String Userusername = username;
+                    String Userusername = "@"+username;
 
-                    String packet = "@"+username+": "+message;
+//                    String packet = "@"+username+": "+message;
+                   String packet = String.format("%s \n %s", Userusername,message);
                     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                     String uid2 = user.getUid();
                     FirebaseDatabase.getInstance()

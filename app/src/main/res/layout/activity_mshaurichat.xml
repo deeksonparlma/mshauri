@@ -4,10 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:fitsSystemWindows="true"
+    android:background="@drawable/fadescreen"
     android:layout_height="match_parent"
     tools:context=".MshaurichatActivity">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:paddingTop="20dp"
+        android:textSize="20dp"
+        android:background="#FDC191"
+        android:text=".."/>
 <LinearLayout
     android:orientation="horizontal"
+    android:layout_marginTop="30dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <ListView
@@ -25,6 +34,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:elevation="20dp"
+        android:background="#F7F3F0"
         android:layout_alignParentBottom="true"
         android:layout_marginTop="550dp"
         android:layout_marginBottom="3dp"
@@ -32,17 +42,30 @@
 
         <EditText
             android:id="@+id/input"
-            android:layout_width="200dp"
+            android:minHeight="50dp"
+            android:layout_width="310dp"
+            android:background="@drawable/chatbubble"
+            android:paddingStart="10dp"
+            android:paddingEnd="5dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="10dp"
             android:hint="message" />
 
         <Button
             android:id="@+id/send"
+            android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
             android:text="send" />
+
+        <ImageView
+            android:id="@+id/send2"
+            android:layout_marginTop="10dp"
+            android:layout_width="50dp"
+            android:layout_height="20dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/send" />
     </LinearLayout>
 
 

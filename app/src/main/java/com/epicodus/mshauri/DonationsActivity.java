@@ -24,13 +24,26 @@ public class DonationsActivity extends AppCompatActivity implements View.OnClick
     @BindView(R.id.Donationbutton) Button Donate;
     @BindView(R.id.number) EditText mNumber;
     @BindView(R.id.amount) EditText mAmount;
-    private Daraja mdaraja;
+    private Daraja daraja;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_donations);
         ButterKnife.bind(this);
         Donate.setOnClickListener(this);
+
+        daraja = Daraja.with("nrNgs4hdS0kkTOqqp6h5et24nlfqfJO8", "Syal7zSIUHO67ffN", new DarajaListener<AccessToken>() {
+            @Override
+            public void onResult(AccessToken accessToken) {
+                Log.i(DonationsActivity.this.getClass().getSimpleName(), accessToken.getAccess_token());
+            }
+
+            @Override
+            public void onError(String error) {
+                Log.e(DonationsActivity.this.getClass().getSimpleName(), error);
+
+            }
+        });
     }
 
     @Override
@@ -53,26 +66,14 @@ public class DonationsActivity extends AppCompatActivity implements View.OnClick
             }
 
 
-            Daraja daraja = Daraja.with("nrNgs4hdS0kkTOqqp6h5et24nlfqfJO8", "Syal7zSIUHO67ffN", new DarajaListener<AccessToken>() {
-                @Override
-                public void onResult(AccessToken accessToken) {
-                    Log.i(DonationsActivity.this.getClass().getSimpleName(), accessToken.getAccess_token());
-                }
-
-                @Override
-                public void onError(String error) {
-                    Log.e(DonationsActivity.this.getClass().getSimpleName(), error);
-
-                }
-            });
             LNMExpress lnmExpress = new LNMExpress(
-                    "42365",
-                    "tArKHN2gfhTYSrq76gR8siM38F4l",  //https://developer.safaricom.co.ke/test_credentials
+                    "174379",
+                    "bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919",  //https://developer.safaricom.co.ke/test_credentials
                     TransactionType.CustomerPayBillOnline,
                     Amount,
-                    "254740392957",
-                    "423655",
-                    "0740392957",
+                    "254708374149",
+                    "174379",
+                    phonenumber,
                     "http://mycallbackurl.com/checkout.php",
                     "001ABC",
                     "Donate to Mshauri"
