@@ -1,10 +1,13 @@
 package com.epicodus.mshauri.adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -58,21 +61,36 @@ public class FoundationsAdapter extends RecyclerView.Adapter<FoundationsAdapter.
     public int getItemCount() {
         return  mFoundation.size();
     }
-    public class FoundationViewHolder extends RecyclerView.ViewHolder {
+    public class FoundationViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         @BindView(R.id.textView5) TextView mPost;
         @BindView(R.id.textView6) TextView mStars;
         @BindView(R.id.name) TextView mName;
+        @BindView(R.id.number) TextView mNumber;
+        @BindView(R.id.call) ImageView call;
         public FoundationViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this,itemView);
+            call.setOnClickListener(this);
             mContext =itemView.getContext();
         }
         public void bindFoundation(FoundationModel foundation){
             mPost.setText(foundation.getPosts());
             mStars.setText(foundation.getStars());
             mName.setText(foundation.getLocation());
+            mNumber.setText(foundation.getNumber());
 //            mLocation.setText("@"+foundation.getLocation());
 //            mLocation.setText("@"+foundation.getLocation());
+        }
+
+        @Override
+        public void onClick(View v) {
+            if(v==call){
+//                Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + "0740392957"));
+//                mContext.startActivity(intent);
+                String phone =mNumber.getText().toString();
+                Intent intent = new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", phone, null));
+                mContext.startActivity(intent);
+            }
         }
     }
 }
