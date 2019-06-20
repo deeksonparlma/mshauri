@@ -16,6 +16,12 @@ import com.androidstudy.daraja.model.AccessToken;
 import com.androidstudy.daraja.model.LNMExpress;
 import com.androidstudy.daraja.model.LNMResult;
 import com.androidstudy.daraja.util.TransactionType;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -25,11 +31,15 @@ public class DonationsActivity extends AppCompatActivity implements View.OnClick
     @BindView(R.id.number) EditText mNumber;
     @BindView(R.id.amount) EditText mAmount;
     private Daraja daraja;
+    private String mSet;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_donations);
         ButterKnife.bind(this);
+        mNumber.setEnabled(false);
+
+        show();
         Donate.setOnClickListener(this);
 
         daraja = Daraja.with("nrNgs4hdS0kkTOqqp6h5et24nlfqfJO8", "Syal7zSIUHO67ffN", new DarajaListener<AccessToken>() {
@@ -44,6 +54,23 @@ public class DonationsActivity extends AppCompatActivity implements View.OnClick
 
             }
         });
+    }
+    private void show() {
+        FirebaseUser current = FirebaseAuth.getInstance().getCurrentUser();
+        String uid = current.getUid();
+        FirebaseDatabase.getInstance().getReference("users").child(uid).child("phoneNumber")
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        String number2 = dataSnapshot.getValue(String.class);
+                        mNumber.setText(number2);
+//                        Log.d("number",number2);
+
+                    }
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                    }
+                });
     }
 
     @Override

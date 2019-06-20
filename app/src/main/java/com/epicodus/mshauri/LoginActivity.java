@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -26,6 +27,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 @BindView(R.id.Loginnbutton) Button mLogin;
 @BindView(R.id.Loginnemail) EditText mEmail;
 @BindView(R.id.Loginnpassword) EditText mPassword;
+    private ProgressDialog mAuthProgressDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +37,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         mLogin.setOnClickListener(this);
         FirebaseApp.initializeApp(this);
         mAuth = FirebaseAuth.getInstance();
+        createAuthProgressDialog();
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if(currentUser == null){
             Toast.makeText(LoginActivity.this, "Register",
@@ -46,6 +49,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             finish();
         }
     }
+    private void createAuthProgressDialog() {
+        mAuthProgressDialog = new ProgressDialog(this);
+        mAuthProgressDialog.setTitle("Loggin in...");
+        mAuthProgressDialog.setMessage("Checking Credentials...");
+        mAuthProgressDialog.setCancelable(false);
+    }
 
     @Override
     public void onClick(View v) {
@@ -56,8 +65,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             finish();
         }
         else if(v == mLogin){
-            String email = mEmail.getText().toString();
-            String password = mPassword.getText().toString();
+            mAuthProgressDialog.show();
+            String email = mEmail.getText().toString().trim();
+            String password = mPassword.getText().toString().trim();
             mAuth.signInWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                         @Override

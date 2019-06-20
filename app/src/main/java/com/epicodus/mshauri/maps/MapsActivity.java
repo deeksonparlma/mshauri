@@ -36,9 +36,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback,LocationListener {
-    private double[] latitudes={-1.2177,-1.2283,-1.2351,-1.2483,-1.3583};
-    private double[] longitudes={36.1977,36.911,36.8981,36.711,39.611};
-    private String[] tags={"GBV CENTER","GBV CENTER","GBV CENTER","GBV CENTER","GBV CENTER"};
     private GoogleMap mMap;
     LocationManager locationManager;
     @BindView(R.id.locationpoints)
@@ -67,14 +64,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        for(Double lat:latitudes){
-            for(Double longit : longitudes){
-                for(String tag:tags){
-                    LatLng place = new LatLng(lat,longit);
-                    mMap.addMarker(new MarkerOptions().position(place).title(tag));
-                }
-            }
-        }
 //         Add a marker in Sydney and move the camera
         LatLng Coptic = new LatLng(-1.2977 , 36.7977);
         mMap.addMarker(new MarkerOptions().position(Coptic).title("Coptic GBV center"));
@@ -91,6 +80,23 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         LatLng coast = new LatLng(-1.3683, 39.711);
         mMap.addMarker(new MarkerOptions().position(coast).title("Coast GBV"));
 
+        LatLng place = new LatLng(-0.700585,37.527091);
+        mMap.addMarker(new MarkerOptions().position(place).title("Gachuriri GBV Center"));
+
+        LatLng place1 = new LatLng(-1.22318,35.255101);
+        mMap.addMarker(new MarkerOptions().position(place1).title("Lemek GBV Center"));
+
+        LatLng place2 = new LatLng(-0.058218,34.877448);
+        mMap.addMarker(new MarkerOptions().position(place2).title("Miwani GBV Center"));
+
+        LatLng place3 = new LatLng(0.821009,35.771057);
+        mMap.addMarker(new MarkerOptions().position(place3).title("Bartabwa GBV Center"));
+
+        LatLng place4 = new LatLng(2.276913,38.774320);
+        mMap.addMarker(new MarkerOptions().position(place4).title("Shura GBV Center"));
+
+        LatLng place5 = new LatLng(1.794288,39.296116);
+        mMap.addMarker(new MarkerOptions().position(place5).title("Hadado GBV Center"));
 
         mMap.moveCamera(CameraUpdateFactory.newLatLng(Coptic));
         CameraUpdate zoom = CameraUpdateFactory.zoomTo(10);
