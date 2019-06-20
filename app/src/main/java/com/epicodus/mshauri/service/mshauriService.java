@@ -4,6 +4,7 @@ import com.epicodus.mshauri.constants.constants;
 import com.epicodus.mshauri.model.AwarenessModel;
 import com.epicodus.mshauri.constants.constants;
 import com.epicodus.mshauri.model.AwarenessModel;
+import com.epicodus.mshauri.model.FoundationModel;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -59,45 +60,45 @@ public class mshauriService {
 //    return user;
 //    }
     //foundations//
-//    public static void getFoundation(Callback callback){
-//        OkHttpClient client = new OkHttpClient.Builder()
-//                .build();
-//
-//        HttpUrl.Builder urlBuilder = HttpUrl.parse(constants.FOUNDATIONS).newBuilder();
-//        String url = urlBuilder.build().toString();
-//        Request request = new Request.Builder()
-//                .url(url)
-//                .build();
-//        Call call = client.newCall(request);
-//        call.enqueue(callback);
-//    }
-//
-//    public ArrayList<foundationModel> foundations(Response response) {
-//        ArrayList<foundationModel> foundationArray = new ArrayList<>();
-//        try {
-//            String jsonData = response.body().string();
-//            System.out.println(jsonData);
-//            JSONArray jsonArray = new JSONArray(jsonData); //access the top node//
-//            if(response.isSuccessful()){
-//                for(int i =0; i<jsonArray.length();i++){
-//                    JSONObject users = jsonArray.getJSONObject(i);
-//                    String name = users.getString("name");
-//                    String contact = users.getString("contact");
-//                    String website = users.getString("website_link");
-//                    String location = users.getString("location");
-//                    String description = users.getString("description");
-//
-//                    foundationModel usersInfo = new foundationModel(name,location,contact,website,description);
-//                    foundationArray.add(usersInfo);
-//                }
-//            }
-//        } catch (JSONException e) {
-//            e.printStackTrace();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        return foundationArray;
-//    }
+    public static void getFoundation(Callback callback){
+        OkHttpClient client = new OkHttpClient.Builder()
+                .build();
+
+        HttpUrl.Builder urlBuilder = HttpUrl.parse(constants.FOUNDATIONS).newBuilder();
+        String url = urlBuilder.build().toString();
+        Request request = new Request.Builder()
+                .url(url)
+                .build();
+        Call call = client.newCall(request);
+        call.enqueue(callback);
+    }
+
+    public ArrayList<FoundationModel> foundations(Response response) {
+        ArrayList<FoundationModel> foundationArray = new ArrayList<>();
+        try {
+            String jsonData = response.body().string();
+            System.out.println(jsonData);
+            JSONArray jsonArray = new JSONArray(jsonData); //access the top node//
+            if(response.isSuccessful()){
+                for(int i =0; i<jsonArray.length();i++){
+                    JSONObject users = jsonArray.getJSONObject(i);
+                    String name = users.getString("name");
+                    String contact = users.getString("contact");
+                    String website = users.getString("website_link");
+                    String location = users.getString("location");
+                    String description = users.getString("description");
+
+                    FoundationModel usersInfo = new FoundationModel(name,location,contact,website,description);
+                    foundationArray.add(usersInfo);
+                }
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return foundationArray;
+    }
 
     //Awareness posts//
     public static void getAwarenessPosts(Callback callback){

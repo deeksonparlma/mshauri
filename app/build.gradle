@@ -40,6 +40,7 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.1.0'
     implementation 'com.google.android.material:material:1.1.0-alpha07'
     implementation 'com.androidstudy:daraja:1.0.2'
+    implementation 'com.facebook.shimmer:shimmer:0.4.0'
     implementation 'com.firebaseui:firebase-ui-database:3.3.1'
 }
 apply plugin: 'com.google.gms.google-services'

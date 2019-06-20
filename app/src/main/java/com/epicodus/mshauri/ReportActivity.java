@@ -14,15 +14,18 @@ import android.widget.ListView;
 import com.epicodus.mshauri.adapter.AwarenessPostsAdapter;
 import com.epicodus.mshauri.adapter.FoundationsAdapter;
 import com.epicodus.mshauri.model.FoundationModel;
+import com.epicodus.mshauri.service.mshauriService;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
 
 public class ReportActivity extends AppCompatActivity {
-    private  String[] location ={"Wangu Kanja"};
-    private  String[] number={"0862783842"};
     private FoundationsAdapter mAdapter;
     ArrayList<FoundationModel> mContent = new ArrayList<>();
     @BindView(R.id.list)
@@ -33,19 +36,62 @@ public class ReportActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_report);
         ButterKnife.bind(this);
-        FoundationModel model = new FoundationModel("4","77","Wangu Kanja","0724523523");
-        FoundationModel model2 = new FoundationModel("40","279","Nairobi Women","0328399352");
-        FoundationModel model3 = new FoundationModel("360","979","Mshauri COnnect","0871249234");
-        mContent.add(model);
-        mContent.add(model2);
-        mContent.add(model3);
-        mAdapter = new FoundationsAdapter(getApplicationContext(),mContent);
-        LinearLayoutManager layoutManager
-                = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+//        mAdapter = new FoundationsAdapter(getApplicationContext(),mContent);
+       getFoundations();
 //        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(ReportActivity.this);
-        mRecyclerView.setLayoutManager(layoutManager);
-        mRecyclerView.setHasFixedSize(true);
-        mRecyclerView.setAdapter(mAdapter);
+//        mRecyclerView.setLayoutManager(layoutManager);
+//        mRecyclerView.setHasFixedSize(true);
+//        mRecyclerView.setAdapter(mAdapter);
+    }
+    public void getFoundations() {
+        final mshauriService service = new mshauriService();
+        service.getFoundation(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                e.printStackTrace();
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                mContent = service.foundations(response);
+                ReportActivity.this.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        mAdapter = new FoundationsAdapter(getApplicationContext(),mContent);
+                        RecyclerView mRecyclerView = findViewById(R.id.fnd);
+                        LinearLayoutManager layoutManager = new LinearLayoutManager(ReportActivity.this, LinearLayoutManager.HORIZONTAL, false);
+//                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(ReportActivity.this);
+                        mRecyclerView.setLayoutManager(layoutManager);
+                        mRecyclerView.setHasFixedSize(true);
+                        mRecyclerView.setAdapter(mAdapter);
+                    }
+                });
+            }
+        });
+//        final mshauriService service = new mshauriService();
+//        service.getFoundation(new Callback() {
+//            @Override
+//            public void onFailure(Call call, IOException e) { e.printStackTrace(); }
+//
+//            @Override
+//            public void onResponse(Call call, Response response) throws IOException {
+//                mContent = service.foundations(response);
+//                ReportActivity.this.runOnUiThread(new Runnable() {
+//                    @Override
+//                    public void run() {
+//
+//                        mAdapter = new FoundationsAdapter(getApplicationContext(),mContent);
+//                        RecyclerView mRecyclerView = findViewById(R.id.fnd);
+//                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(ReportActivity.this);
+//                        mRecyclerView.setLayoutManager(layoutManager);
+//                        mRecyclerView.setHasFixedSize(true);
+//                        mRecyclerView.setAdapter(mAdapter);
+//
+//                    }
+//                });
+//
+//            }
+//        });
     }
 
 //    @Override

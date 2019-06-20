@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -18,6 +19,7 @@ import com.epicodus.mshauri.adapter.AwarenessPostsAdapter;
 import com.epicodus.mshauri.maps.MapsActivity;
 import com.epicodus.mshauri.model.AwarenessModel;
 import com.epicodus.mshauri.service.mshauriService;
+import com.facebook.shimmer.ShimmerFrameLayout;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.io.IOException;
@@ -35,10 +37,11 @@ public class homeActivity extends AppCompatActivity  implements View.OnClickList
     @BindView(R.id.foundation2) TextView mText;
     @BindView(R.id.donate) ImageView mDonate;
     @BindView(R.id.reportt) TextView mReport;
-
+    @BindView(R.id.parentShimmerLayout) ShimmerFrameLayout mShimmer;
     ArrayList<AwarenessModel> Awareness = new ArrayList<>();
     @BindView(R.id.floatingActionButton2)
     FloatingActionButton mChat;
+    @BindView(R.id.postRecyclerView) RecyclerView mRec;
     private AwarenessPostsAdapter mAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +54,7 @@ public class homeActivity extends AppCompatActivity  implements View.OnClickList
         mChat.setOnClickListener(this);
         mForum.setOnClickListener(this);
         mReport.setOnClickListener(this);
+
         getPosts();
     }
 //    private void dialog(){
@@ -75,13 +79,14 @@ public class homeActivity extends AppCompatActivity  implements View.OnClickList
                 homeActivity.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
+
                         mAdapter = new AwarenessPostsAdapter(getApplicationContext(),Awareness);
                         RecyclerView mRecyclerView = findViewById(R.id.postRecyclerView);
                         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(homeActivity.this);
                         mRecyclerView.setLayoutManager(layoutManager);
                         mRecyclerView.setHasFixedSize(true);
                         mRecyclerView.setAdapter(mAdapter);
-
+                        mShimmer.stopShimmer();
                     }
                 });
 

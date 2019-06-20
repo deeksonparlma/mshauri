@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.epicodus.mshauri.R;
 import com.epicodus.mshauri.model.AwarenessModel;
 import com.epicodus.mshauri.model.FoundationModel;
+import com.facebook.shimmer.ShimmerFrameLayout;
 
 import java.util.ArrayList;
 
@@ -28,6 +29,9 @@ public class AwarenessPostsAdapter extends RecyclerView.Adapter<AwarenessPostsAd
 
     @Override
     public AwarenessPostsAdapter.AwarenessViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+//        LayoutInflater.from(parent.getContext()).inflate(R.layout.shimmer,parent,false);
+//        ShimmerFrameLayout container = (ShimmerFrameLayout) findViewById(R.id.shimmer_view_container);
+//        container.startShimmer();
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.awarenessmodel,parent,false);
         AwarenessPostsAdapter.AwarenessViewHolder viewHolder =new AwarenessViewHolder(view);
         return viewHolder;

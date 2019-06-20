@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="190dp"
+        android:elevation="20dp"
+        >
+
+        <TextView
+            android:id="@+id/AwarenesspostFoundation"
+            android:layout_width="140dp"
+            android:background="#B6B5B4"
+            android:layout_height="10dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="291dp"
+            android:layout_marginBottom="114dp"
+            android:textColor="#000"
+            android:textSize="19sp" />
+
+        <!--<TextView-->
+        <!--android:id="@+id/AwarenesspostTitle"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentEnd="true"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:layout_marginStart="10dp"-->
+        <!--android:layout_marginEnd="9dp"-->
+        <!--android:layout_marginTop="40dp"-->
+        <!--android:layout_marginBottom="89dp"-->
+        <!--android:text="Article title"-->
+        <!--android:textFontWeight="3000dp"-->
+        <!--android:fontFamily="sans-serif-black"-->
+        <!--android:textColor="#000"-->
+        <!--android:textSize="17sp" />-->
+        <TextView
+            android:id="@+id/AwarenesspostTitle"
+            android:layout_width="200dp"
+            android:layout_height="10dp"
+            android:background="#B6B5B4"
+            android:layout_marginStart="10dp"
+            android:fontFamily="sans-serif-black"
+            android:textSize="20dp"
+            android:layout_marginTop="45dp"
+            />
+
+        <TextView
+            android:id="@+id/AwarenesspostArticle"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginTop="90dp"
+            android:layout_marginBottom="53dp"
+            android:background="#B6B5B4"
+            android:textColor="#000" />
+
+        <TextView
+            android:id="@+id/AwarenesspostDate"
+            android:layout_width="100dp"
+            android:layout_height="10dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="38dp"
+            android:layout_marginTop="165dp"
+            android:layout_marginStart="250dp"
+            android:layout_marginBottom="12dp"
+            android:background="#B6B5B4"
+            android:textColor="#000" />
+    </androidx.cardview.widget.CardView>
+</LinearLayout>

@@ -1,31 +1,38 @@
 package com.epicodus.mshauri.model;
 
 public class FoundationModel {
-    String posts;
-    String stars;
-    String Location;
-    String Number;
+    String mName;
+    String mLocation;
+    String mContact;
+    String mWebsite;
+    String mDescription;
 
-    public FoundationModel(String posts, String stars, String location, String number) {
-        this.posts = posts;
-        this.stars = stars;
-        Location = location;
-        Number = number;
+
+    public FoundationModel(String name, String location, String contact, String website , String description) {
+        this.mName = name;
+        this.mLocation = location;
+        this.mContact = contact;
+        this.mDescription = description;
+        mWebsite = website;
     }
 
-    public String getPosts() {
-        return posts;
+    public String getmName() {
+        return mName;
     }
 
-    public String getStars() {
-        return stars;
+    public String getmLocation() {
+        return mLocation;
     }
 
-    public String getLocation() {
-        return Location;
+    public String getmContact() {
+        return mContact;
     }
 
-    public String getNumber() {
-        return Number;
+    public String getmWebsite() {
+        return mWebsite;
+    }
+
+    public String getmDescription() {
+        return mDescription;
     }
 }

@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.epicodus.mshauri.R;
 import com.epicodus.mshauri.model.AwarenessModel;
 import com.epicodus.mshauri.model.FoundationModel;
+import com.facebook.shimmer.ShimmerFrameLayout;
 
 import java.util.ArrayList;
 
@@ -47,6 +48,7 @@ public class FoundationsAdapter extends RecyclerView.Adapter<FoundationsAdapter.
 
     @Override
     public FoundationsAdapter.FoundationViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.foundationmodel,parent,false);
         FoundationsAdapter.FoundationViewHolder viewHolder =new FoundationViewHolder(view);
         return viewHolder;
@@ -67,17 +69,19 @@ public class FoundationsAdapter extends RecyclerView.Adapter<FoundationsAdapter.
         @BindView(R.id.name) TextView mName;
         @BindView(R.id.number) TextView mNumber;
         @BindView(R.id.call) ImageView call;
+        @BindView(R.id.web) ImageView website;
         public FoundationViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this,itemView);
             call.setOnClickListener(this);
+            website.setOnClickListener(this);
             mContext =itemView.getContext();
         }
         public void bindFoundation(FoundationModel foundation){
-            mPost.setText(foundation.getPosts());
-            mStars.setText(foundation.getStars());
-            mName.setText(foundation.getLocation());
-            mNumber.setText(foundation.getNumber());
+            mPost.setText(foundation.getmLocation());
+            mStars.setText(foundation.getmWebsite());
+            mName.setText(foundation.getmName());
+            mNumber.setText(foundation.getmContact());
 //            mLocation.setText("@"+foundation.getLocation());
 //            mLocation.setText("@"+foundation.getLocation());
         }
@@ -87,9 +91,15 @@ public class FoundationsAdapter extends RecyclerView.Adapter<FoundationsAdapter.
             if(v==call){
 //                Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + "0740392957"));
 //                mContext.startActivity(intent);
-                String phone =mNumber.getText().toString();
+                String phone =mNumber.getText().toString().trim();
                 Intent intent = new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", phone, null));
                 mContext.startActivity(intent);
+            }
+            else if(v==website){
+                String url=mStars.getText().toString().trim();
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse(url));
+                mContext.startActivity(i);
             }
         }
     }
