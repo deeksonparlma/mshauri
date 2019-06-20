@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Mshauri</string>
+    <string name="log_in">Log in</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="google_maps_api">AIzaSyC-qwo17h0XnG7JY-h3dWnQdEDcO8uGXC0</string>
+</resources>
+

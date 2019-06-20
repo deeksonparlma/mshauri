@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".chatActivity">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#3423"
+        android:text="CHATS"
+        android:textSize="20dp"/>
+<androidx.recyclerview.widget.RecyclerView
+    android:id="@+id/chatsRecyvlerView"
+    android:layout_marginTop="50dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:visibility="gone">
+
+</androidx.recyclerview.widget.RecyclerView>
+<ListView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="50dp"
+    android:visibility="gone">
+
+</ListView>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="50dp"
+        android:background="#3254">
+        <TextView
+            android:id="@+id/chatusernamee"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="dickson"
+            android:layout_marginTop="30dp"
+            android:textSize="30dp"
+            android:layout_marginStart="40dp"/>
+    </FrameLayout>
+    <!--<LinearLayout-->
+        <!--android:orientation="horizontal"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_marginTop="650dp"-->
+        <!--android:layout_height="60dp">-->
+
+        <!--<EditText-->
+            <!--android:layout_width="300dp"-->
+            <!--android:layout_height="50dp"-->
+            <!--android:paddingStart="20dp"-->
+           <!--/>-->
+            <!--<Button-->
+            <!--android:layout_width="60dp"-->
+            <!--android:layout_height="60dp"-->
+            <!--android:text="send"/>-->
+    <!--</LinearLayout>-->
+    <ListView
+        android:id="@+id/listview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="200dp"></ListView>
+</RelativeLayout>

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "666504039122",
+    "firebase_url": "https://mshauriconnectapp.firebaseio.com",
+    "project_id": "mshauriconnectapp",
+    "storage_bucket": "mshauriconnectapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:666504039122:android:a52f50ab4a51eaab",
+        "android_client_info": {
+          "package_name": "com.epicodus.mshauri"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "666504039122-g49tbnhqap78n39jgeq6gq6mgsk3954o.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.epicodus.mshauri",
+            "certificate_hash": "3ae28e4a372174833dcb464d0bb47a1188ad07c1"
+          }
+        },
+        {
+          "client_id": "666504039122-oauejvvnh8dbuuoath1maabmse25rfm3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC2_J6-KhxbF74nuoZDJe1UHYD7a-J2ljY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "666504039122-oauejvvnh8dbuuoath1maabmse25rfm3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

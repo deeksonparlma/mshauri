@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".homeActivity"
+    android:background="@drawable/fadescreen">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#99FF8350">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MSHAURI CONNECT"
+            android:textColor="#000"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="10dp"/>
+
+    </LinearLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#CCFFFFFF"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="0dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginTop="25dp"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_height="wrap_content"
+                android:text="Forums"/>
+
+            <TextView
+                android:id="@+id/foundation2"
+                android:layout_width="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_height="wrap_content"
+                android:text="Foundations"/>
+
+            <TextView
+                android:id="@+id/reportt"
+                android:layout_width="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_height="wrap_content"
+                android:text="Report"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:text="Programs"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/forumOption"
+                android:layout_width="20dp"
+                android:layout_marginStart="30dp"
+                android:layout_height="20dp"
+                android:src="@drawable/forum"/>
+
+            <ImageView
+                android:id="@+id/foundation1"
+                android:layout_width="20dp"
+                android:layout_marginStart="70dp"
+                android:layout_height="20dp"
+                android:src="@drawable/foundation"/>
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_marginStart="70dp"
+                android:layout_height="20dp"
+                android:src="@drawable/report"/>
+            <ImageView
+                android:id="@+id/donate"
+                android:layout_width="20dp"
+                android:layout_marginStart="70dp"
+                android:layout_height="20dp"
+                android:src="@drawable/programs"/>
+
+        </LinearLayout>
+
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/postRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:layout_marginTop="550dp"
+        android:layout_marginStart="300dp"
+        app:srcCompat="@drawable/forum" />
+</RelativeLayout>
