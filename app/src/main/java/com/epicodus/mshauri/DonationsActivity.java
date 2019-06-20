@@ -71,7 +71,7 @@ public class DonationsActivity extends AppCompatActivity implements View.OnClick
                     "bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919",  //https://developer.safaricom.co.ke/test_credentials
                     TransactionType.CustomerPayBillOnline,
                     Amount,
-                    "254708374149",
+                    "254740392957",
                     "174379",
                     phonenumber,
                     "http://mycallbackurl.com/checkout.php",
