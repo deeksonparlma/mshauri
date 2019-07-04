@@ -7,63 +7,87 @@
     android:background="@drawable/fadescreen"
     android:layout_height="match_parent"
     tools:context=".MshaurichatActivity">
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:layout_width="match_parent"
+        android:layout_marginTop="50dp"
+        android:layout_height="match_parent"
+        android:id="@+id/chatshimmer"
+        app:shimmer_duration="1000"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include layout="@layout/shimmerchat"/>
+            <include layout="@layout/shimmerchat"/>
+            <include layout="@layout/shimmerchat"/>
+            <include layout="@layout/shimmerchat"/>
+            <include layout="@layout/shimmerchat"/>
+            <include layout="@layout/shimmerchat"/>
+            <include layout="@layout/shimmerchat"/>
+            <include layout="@layout/shimmerchat"/>
+            <include layout="@layout/shimmerchat"/>
+            <include layout="@layout/shimmerchat"/>
+        </LinearLayout>
+    </com.facebook.shimmer.ShimmerFrameLayout>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:paddingTop="20dp"
-        android:textSize="20dp"
+        android:layout_marginBottom="632dp"
         android:background="#FDC191"
-        android:text=".."/>
-<LinearLayout
-    android:orientation="horizontal"
-    android:layout_marginTop="30dp"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+        android:elevation="20dp"
+        android:gravity="top"
+        android:id="@+id/me"
+        android:paddingTop="10dp"
+        android:text="Real time Forum"
+        android:textSize="20dp" />
+
     <ListView
         android:id="@+id/listMessages"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="500dp"
+        android:layout_alignTop="@+id/me"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="29dp"/>
-</LinearLayout>
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="52dp"
+        android:windowSoftInputMode="adjustNothing" />
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:elevation="20dp"
-        android:background="#F7F3F0"
-        android:layout_alignParentBottom="true"
-        android:layout_marginTop="550dp"
-        android:layout_marginBottom="3dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="617dp"
+        android:layout_marginBottom="0dp"
+        android:elevation="190dp"
+        android:background="#E5E5E5"
         android:orientation="horizontal">
 
         <EditText
             android:id="@+id/input"
-            android:minHeight="50dp"
             android:layout_width="310dp"
-            android:background="@drawable/chatbubble"
-            android:paddingStart="10dp"
-            android:paddingEnd="5dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:hint="message" />
+            android:background="@drawable/chatbubble"
+            android:hint="message"
+            android:minHeight="50dp"
+            android:paddingStart="10dp"
+            android:paddingEnd="5dp" />
 
         <Button
             android:id="@+id/send"
-            android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
-            android:text="send" />
+            android:text="send"
+            android:visibility="gone" />
 
         <ImageView
             android:id="@+id/send2"
-            android:layout_marginTop="10dp"
             android:layout_width="50dp"
             android:layout_height="20dp"
+            android:layout_marginTop="10dp"
             android:layout_weight="1"
             app:srcCompat="@drawable/send" />
     </LinearLayout>

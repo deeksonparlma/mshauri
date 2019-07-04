@@ -87,37 +87,14 @@ public class DonationsActivity extends AppCompatActivity implements View.OnClick
                 mAmount.setError("Amount can't be empty");
                 return;
             }
-            if(Integer.valueOf(Amount)<50){
-                mAmount.setError("Minimum amount is 50/=");
+            if(Integer.valueOf(Amount)<0){
+                mAmount.setError("Minimum amount is 0/=");
                 return;
             }
 
 
-            LNMExpress lnmExpress = new LNMExpress(
-                    "174379",
-                    "bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919",  //https://developer.safaricom.co.ke/test_credentials
-                    TransactionType.CustomerPayBillOnline,
-                    Amount,
-                    "254740392957",
-                    "174379",
-                    phonenumber,
-                    "http://mycallbackurl.com/checkout.php",
-                    "001ABC",
-                    "Donate to Mshauri"
-            );
-            daraja.requestMPESAExpress(lnmExpress,
-                    new DarajaListener<LNMResult>() {
-                        @Override
-                        public void onResult(@NonNull LNMResult lnmResult) {
-                            Log.i(DonationsActivity.this.getClass().getSimpleName(), lnmResult.ResponseDescription);
-                        }
 
-                        @Override
-                        public void onError(String error) {
-                            Log.i(DonationsActivity.this.getClass().getSimpleName(), error);
-                        }
-                    }
-            );
+
         }
     }
 }

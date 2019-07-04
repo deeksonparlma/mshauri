@@ -12,7 +12,6 @@
         android:layout_marginTop="50dp"
         android:layout_height="match_parent"
         android:id="@+id/parentShimmerLayout"
-        app:shimmer_duration="1000"
         >
         <LinearLayout
             android:layout_width="match_parent"
@@ -36,6 +35,15 @@
             android:textColor="#000"
             android:layout_marginTop="20dp"
             android:layout_marginStart="10dp"/>
+        <Button
+            android:id="@+id/logout"
+            android:background="#BFFF8350"
+            android:textAllCaps="false"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="150dp"
+            android:text="Logout"/>
 
     </LinearLayout>
 
@@ -53,6 +61,7 @@
             android:layout_height="wrap_content">
 
             <TextView
+                android:id="@+id/forumtext"
                 android:layout_width="wrap_content"
                 android:layout_marginStart="30dp"
                 android:layout_height="wrap_content"
@@ -73,10 +82,11 @@
                 android:text="Report"/>
 
             <TextView
+                android:id="@+id/donation2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="40dp"
-                android:text="Programs"/>
+                android:text="Donations"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -98,8 +108,9 @@
                 android:src="@drawable/foundation"/>
 
             <ImageView
+                android:id="@+id/report1"
                 android:layout_width="20dp"
-                android:layout_marginStart="70dp"
+                android:layout_marginStart="60dp"
                 android:layout_height="20dp"
                 android:src="@drawable/report"/>
             <ImageView

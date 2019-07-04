@@ -15,6 +15,7 @@ import com.epicodus.mshauri.adapter.AwarenessPostsAdapter;
 import com.epicodus.mshauri.adapter.FoundationsAdapter;
 import com.epicodus.mshauri.model.FoundationModel;
 import com.epicodus.mshauri.service.mshauriService;
+import com.facebook.shimmer.ShimmerFrameLayout;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -27,6 +28,8 @@ import okhttp3.Response;
 
 public class ReportActivity extends AppCompatActivity {
     private FoundationsAdapter mAdapter;
+    @BindView(R.id.foundationShimmer)
+    ShimmerFrameLayout mShimmer;
     ArrayList<FoundationModel> mContent = new ArrayList<>();
     @BindView(R.id.list)
     ListView mList;
@@ -64,6 +67,7 @@ public class ReportActivity extends AppCompatActivity {
                         mRecyclerView.setLayoutManager(layoutManager);
                         mRecyclerView.setHasFixedSize(true);
                         mRecyclerView.setAdapter(mAdapter);
+                        mShimmer.stopShimmer();
                     }
                 });
             }

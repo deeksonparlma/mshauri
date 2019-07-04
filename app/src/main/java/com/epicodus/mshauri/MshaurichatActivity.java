@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -15,6 +16,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.epicodus.mshauri.model.ChatMessage;
+import com.facebook.shimmer.ShimmerFrameLayout;
 import com.firebase.ui.database.FirebaseListAdapter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -34,7 +36,8 @@ import butterknife.ButterKnife;
 
 public class MshaurichatActivity extends AppCompatActivity implements View.OnClickListener{
     private Timer autoUpdate;
-@BindView(R.id.send) Button mSend;
+    @BindView(R.id.chatshimmer)
+    ShimmerFrameLayout mShimmer;
     private FirebaseListAdapter<ChatMessage> adapter;
     @BindView(R.id.send2)
     ImageView sendMessage;
@@ -46,10 +49,10 @@ public class MshaurichatActivity extends AppCompatActivity implements View.OnCli
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mshaurichat);
         ButterKnife.bind(this);
-        mSend.setOnClickListener(this);
         sendMessage.setOnClickListener(this);
         displayChatMessages();
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+//        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 //        show();
     }
 
@@ -108,6 +111,8 @@ public class MshaurichatActivity extends AppCompatActivity implements View.OnCli
                         }
                         ArrayAdapter<String> adapter = new ArrayAdapter<String>(MshaurichatActivity.this, android.R.layout.simple_list_item_1, messages);
                         allMessages.setAdapter(adapter);
+                        mShimmer.setVisibility(View.INVISIBLE);
+                        mShimmer.stopShimmer();
                     }
                     @Override
                     public void onCancelled(DatabaseError databaseError) {

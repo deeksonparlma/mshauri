@@ -130,9 +130,10 @@ public class signup extends AppCompatActivity implements View.OnClickListener{
                                 } else {
                                     Toast.makeText(signup.this, "Sign up failed.",
                                             Toast.LENGTH_SHORT).show();
+                                    mAuthProgressDialog.dismiss();
+
                                 }
 
-                                // ...
                             }
                         });
 

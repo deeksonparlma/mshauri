@@ -6,9 +6,16 @@ import butterknife.ButterKnife;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.os.Bundle;
+import android.transition.Slide;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
+import android.view.Window;
+import android.view.animation.LinearInterpolator;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -44,6 +51,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     Toast.LENGTH_SHORT).show();
         }
         else{
+            mAuthProgressDialog.show();
             Intent intent = new Intent(LoginActivity.this, homeActivity.class);
             startActivity(intent);
             finish();
@@ -59,6 +67,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @Override
     public void onClick(View v) {
         if(v == mSignUp){
+
             Intent intent = new Intent(LoginActivity.this, signup.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
             startActivityForResult(intent, 0);
@@ -83,6 +92,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                 Log.w("sign", "signInWithEmail:failure", task.getException());
                                 Toast.makeText(LoginActivity.this, "Authentication failed.",
                                         Toast.LENGTH_SHORT).show();
+                                mAuthProgressDialog.dismiss();
                             }
 
                             // ...

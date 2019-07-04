@@ -5,6 +5,51 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".splashHome"
-    android:background="@drawable/fadescreen">
+    android:background="@drawable/consultants">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/fade"
 
+        >
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="182dp"
+            android:layout_marginBottom="127dp"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="99dp"
+            android:layout_marginEnd="112dp"
+            android:layout_marginBottom="346dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/appicon" />
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="402dp"
+            android:layout_marginEnd="84dp"
+            android:layout_marginBottom="228dp"
+            android:text="MSHAURI CONNECT"
+            android:textSize="25sp" />
+
+
+    </RelativeLayout>
 </RelativeLayout>
